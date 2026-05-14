@@ -1,0 +1,10 @@
+{
+  "id": "preserve-blank-lines",
+  "name": "Preserve Blank Lines",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Preserves consecutive blank lines in reading mode, matching the source 1:1.",
+  "author": "Yves Lefebvre",
+  "authorUrl": "https://github.com/Ivanohe73",
+  "isDesktopOnly": false
+}
