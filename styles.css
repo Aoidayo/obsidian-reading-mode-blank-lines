@@ -1,0 +1,32 @@
+.reading-blank-line-spacer {
+  display: block;
+  height: 1lh;
+  min-height: var(--line-height-normal, 1.5em);
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.reading-blank-lines-block {
+  padding-top: var(--reading-blank-lines-before, 0);
+  padding-bottom: var(--reading-blank-lines-after, 0);
+}
+
+.markdown-preview-view
+  .markdown-preview-section
+  > [class^='el-']
+  > :is(h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, pre, table, .callout) {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.markdown-preview-view
+  .markdown-preview-section
+  > [class^='el-']
+  > :is(h1, h2, h3, h4, h5, h6):first-child,
+.markdown-preview-view
+  .markdown-preview-section
+  > [class^='el-']
+  > :is(p, ul, ol, blockquote, pre, table, .callout):first-child {
+  margin-top: 0;
+}

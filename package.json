@@ -1,11 +1,12 @@
 {
-  "name": "preserve-blank-lines",
-  "version": "0.1.0",
-  "description": "Preserves consecutive blank lines in reading mode, matching the source 1:1.",
+  "name": "reading-mode-blank-lines",
+  "version": "0.2.0",
+  "description": "Preserves eligible Markdown source blank lines in Reading mode with exact spacing.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
-    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "test": "node tests/blank-line-analysis.test.mjs && node tests/reading-mode-renderer.test.mjs && node tests/reading-mode-refresh.test.mjs && node tests/reading-mode-settings.test.mjs"
   },
   "keywords": [
     "obsidian",
@@ -13,7 +14,7 @@
     "markdown",
     "whitespace"
   ],
-  "author": "Yves Lefebvre",
+  "author": "aoidayo",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",

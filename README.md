@@ -1,73 +1,61 @@
-# Preserve Blank Lines
+# Reading Mode Blank Lines
 
-An [Obsidian](https://obsidian.md) plugin that preserves consecutive blank lines in **reading mode**, matching the source 1:1.
+**Reading Mode Blank Lines** is an Obsidian plugin that preserves eligible blank lines from the Markdown source when notes are rendered in **Reading mode**.
 
-By default, Obsidian's Markdown renderer collapses any number of consecutive blank lines into a single paragraph break in reading mode. This plugin restores the extra blanks so that the visual spacing matches what you typed.
-
-## Why this exists
-
-I am migrating my notes from Zim desktop wiki to Obsidian as it has better support for code blocks and mobile devices. However, one thing that was bugging me was that some of my notes, once transferred to Obsidian, looked "cramped". I found out that Zim preserves blank lines.
-
-I was not able to find any simple solution for Obsidian : What I found on forums was to add "/" slash character on blank line you want to preserve, or some "Em Space" (invisible character) that made editing confusing because it is difficult to see. Or some html `<br>` tag.
-
-Other people say if you don't like Markdown, then use another tool than Obsidian. I see Obsidian already has some specific Obsidian-only Markdown syntax, so why not add an option in it to preserve space in reader mode? Personal notes aren't tech documentation. I want spacing the way other tools allow it.
-
-Hence this plugin. Hope you find it useful!
-
-## Example
-
-Source:
-
-```markdown
-First paragraph.
+**Reading Mode Blank Lines** 是一个 Obsidian 插件，用于在笔记渲染为 **Reading mode（阅读模式）** 时，保留 Markdown 源文件中符合条件的空行。
 
 
+Thanks to the following plugin:
 
-Second paragraph after three blank lines.
-```
+感谢以下插件：
 
-Without the plugin, reading mode collapses this to a single paragraph break. With the plugin enabled, the three blank lines are preserved.
+[Ivanohe73/obsidian-preserve-blank-lines](https://github.com/Ivanohe73/obsidian-preserve-blank-lines)
 
-## Install
+This plugin fixes several issues found in `preserve-blank-lines`:
 
-### Manual install
+本插件解决了 `preserve-blank-lines` 中的一些问题：
 
-1. Download `main.js`, `manifest.json`, and `versions.json` from the [latest release](https://github.com/Ivanohe73/obsidian-preserve-blank-lines/releases).
-2. Place them in `<your-vault>/.obsidian/plugins/preserve-blank-lines/`.
-3. In Obsidian: **Settings -> Community plugins**, disable Restricted mode if needed, click the refresh icon, then enable **Preserve Blank Lines**.
+* After adding blank lines in **Live Preview mode**, switching back to **Reading mode** now triggers a re-render and displays the latest number of blank lines.
+* The blank-line size can be freely adjusted in the plugin settings.
 
-### From the community store
+* 在 **Live Preview（实时预览）** 模式下添加空行后，再次切换到 **Reading mode（阅读模式）** 时会触发重新渲染，并显示最新的空行数量。
+* 支持在插件设置中自由调整空行高度。
 
-Not yet submitted. Once approved, it will be installable from **Settings -> Community plugins -> Browse**.
+This plugin was developed entirely with Codex.
 
-## Customize spacing
+本插件完全使用 Codex 开发。
 
-Each preserved blank line is rendered as a `<div class="preserve-blank-line">`. Add a CSS snippet (**Settings -> Appearance -> CSS snippets**) to tweak height:
 
-```css
-.preserve-blank-line {
-  line-height: 1.5;
-}
-```
+## Development / 开发
 
-## Known limitations
+Install dependencies / 安装依赖：
 
-- **Skips nested contexts.** Inside callouts, transclusions/embeds, and some other nested rendering contexts, Obsidian's `MarkdownPostProcessorContext.getSectionInfo()` returns `null`. Blocks in those contexts are silently passed through unchanged. See the [API docs](https://docs.obsidian.md/Reference/TypeScript+API/MarkdownPostProcessorContext/getSectionInfo).
-
-## Build from source
-
-Requires [Node.js](https://nodejs.org/) 18+ and npm.
-
-```sh
-git clone https://github.com/Ivanohe73/obsidian-preserve-blank-lines.git
-cd obsidian-preserve-blank-lines
+```bash
 npm install
-npm run dev    # watch mode for development
-npm run build  # production bundle
 ```
 
-The build outputs `main.js` in the project root.
+Run parser tests / 运行解析器测试：
 
-## License
+```bash
+npm test
+```
 
-[MIT](LICENSE)
+Build the plugin / 构建插件：
+
+```bash
+npm run build
+```
+
+After building, get the following file / 构建完成后获取以下文件：
+
+```text
+main.js
+```
+
+Use it together with the following files / 将其与以下文件一起使用：
+
+```text
+manifest.json
+style.css
+versions.json
+```
